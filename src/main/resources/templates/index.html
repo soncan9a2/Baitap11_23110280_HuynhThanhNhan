@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+</head>
+<body>
+<h1>Products</h1>
+
+<p sec:authorize="isAuthenticated()">
+    Logged in as <b sec:authentication="name"></b>
+    <form th:action="@{/logout}" method="post" style="display:inline">
+        <button type="submit">Logout</button>
+    </form>
+</p>
+
+<ul>
+    <li th:each="p, i : ${products}">
+        <span th:text="${p}"></span>
+        <a th:href="@{'/edit/' + ${i.index}}">Edit</a>
+        <form th:action="@{'/delete/' + ${i.index}}" method="post" style="display:inline">
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+    <li th:if="${products == null || #lists.isEmpty(products)}">No products</li>
+    </ul>
+
+<p><a th:href="@{/new}">New product</a></p>
+
+</body>
+</html>
+
+

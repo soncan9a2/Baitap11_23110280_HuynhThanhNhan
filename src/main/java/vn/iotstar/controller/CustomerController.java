@@ -2,7 +2,6 @@ package vn.iotstar.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,7 +10,6 @@ import vn.iotstar.model.Customer;
 import java.util.List;
 
 @RestController
-@EnableMethodSecurity
 public class CustomerController {
     final private List<Customer> customers = List.of(
             Customer.builder().id("001").name("Huỳnh Thanh Nhân").email("dutruaydutruay@gmail.com").build(),
