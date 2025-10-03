@@ -1,15 +1,16 @@
-## Spring Security 6 Demos (1, 2, 3)
+## Huỳnh Thanh Nhân - 23110280
 
-### Yêu cầu
-- JDK 17+, Maven
-- SQL Server được cấu hình trong `src/main/resources/application.properties`
+## Spring Security 6 Demos (1, 2, 3, 4)
 
-Chạy app:
-```bash
-mvnw.cmd spring-boot:run
-```
+### Chi tiết
+#### Demo 1: Cài đặt, Cấu hình, Phân quyền trong Spring Security (link 1)
 
----
+#### Demo 2: Sử dụng database để lưu và lấy dữ liệu cho việc phân quyền trong Spring Security (link 1)
+
+#### Demo 3: Spring security với Thymeleaf (link 1)
+
+#### Demo 4: Demo JWT với Spring Boot 3 – Security 6 (link 2)
+
 
 ### Demo 1 – Cài đặt, Cấu hình, Phân quyền trong Spring Security
 - Public: `GET /hello`
@@ -68,5 +69,38 @@ curl -X POST http://localhost:8080/user/new \
 - API tạo user (Demo 2): `src/main/java/vn/iotstar/controller/UserController.java`
 - UI & CRUD mẫu (Demo 3): `src/main/java/vn/iotstar/controller/ProductController.java`
 - Thymeleaf templates: `src/main/resources/templates/`
+
+---
+
+### Demo 4 – JWT (JSON Web Token)
+- Đăng nhập nhận token: `POST /auth/login` (JSON body: `{ "username", "password" }`)
+- Gọi API kèm Bearer token: `GET /users/me` với header `Authorization: Bearer <token>`
+
+Ví dụ:
+```bash
+curl -X POST http://localhost:8080/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"username":"adminfull","password":"123"}'
+
+curl http://localhost:8080/users/me \
+  -H "Authorization: Bearer <token>"
+```
+
+Test nhanh (PowerShell):
+```powershell
+# 1) (tuỳ chọn) Tạo user
+curl -Method POST http://localhost:8080/user/new `
+  -Headers @{ "Content-Type" = "application/json" } `
+  -Body '{"name":"adminfull","email":"adminfull@example.com","password":"123","roles":"ROLE_ADMIN,ROLE_USER,ROLE_EDITOR,ROLE_CREATOR"}'
+
+# 2) Đăng nhập lấy token
+$login = curl -Method POST http://localhost:8080/auth/login `
+  -Headers @{ "Content-Type" = "application/json" } `
+  -Body '{"username":"adminfull","password":"123"}'
+$token = ($login.Content | ConvertFrom-Json).token
+
+# 3) Gọi API có bảo vệ
+curl http://localhost:8080/users/me -Headers @{ "Authorization" = "Bearer $token" }
+```
 
 
