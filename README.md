@@ -3,13 +3,13 @@
 ## Spring Security 6 Demos (1, 2, 3, 4)
 
 ### Chi tiết
-#### Demo 1: Cài đặt, Cấu hình, Phân quyền trong Spring Security (link 1)
+#### Demo 1: Cài đặt, Cấu hình, Phân quyền trong Spring Security (link 1 bài giảng utex)
 
-#### Demo 2: Sử dụng database để lưu và lấy dữ liệu cho việc phân quyền trong Spring Security (link 1)
+#### Demo 2: Sử dụng database để lưu và lấy dữ liệu cho việc phân quyền trong Spring Security (link 1 bài giảng utex)
 
-#### Demo 3: Spring security với Thymeleaf (link 1)
+#### Demo 3: Spring security với Thymeleaf (link 1 bài giảng utex)
 
-#### Demo 4: Demo JWT với Spring Boot 3 – Security 6 (link 2)
+#### Demo 4: Demo JWT với Spring Boot 3 – Security 6 (link 2 bài giảng utex)
 
 
 ### Demo 1 – Cài đặt, Cấu hình, Phân quyền trong Spring Security
